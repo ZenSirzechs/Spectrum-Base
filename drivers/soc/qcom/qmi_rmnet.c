@@ -1319,12 +1319,8 @@ void qmi_rmnet_work_init(void *port)
 		return;
 	}
 
-	if (dfc_qmap && dfc_ps_ext)
-		INIT_DELAYED_WORK(&rmnet_work->work,
-				     qmi_rmnet_check_stats_2);
-	else
-		INIT_DELAYED_WORK(&rmnet_work->work, qmi_rmnet_check_stats);
-
+	INIT_DELAYED_WORK(&rmnet_work->work,
+			  qmi_rmnet_check_stats);
 	rmnet_work->port = port;
 	rmnet_get_packets(rmnet_work->port, &rmnet_work->old_rx_pkts,
 			  &rmnet_work->old_tx_pkts);
