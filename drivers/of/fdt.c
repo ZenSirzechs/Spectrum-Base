@@ -14,6 +14,7 @@
 #include <linux/bootmem.h>
 #include <linux/memblock.h>
 #include <linux/mutex.h>
+#include <linux/oem/param_rw.h>
 #include <linux/of.h>
 #include <linux/of_fdt.h>
 #include <linux/of_reserved_mem.h>
@@ -31,10 +32,6 @@
 #include <asm/page.h>
 
 #include "of_private.h"
-
-#if IS_ENABLED(CONFIG_OPLUS_PARAM_READ_WRITE)
-void init_param_mem_base_size(phys_addr_t base, unsigned long size);
-#endif
 
 /*
  * of_fdt_limit_memory - limit the number of regions in the /memory node
