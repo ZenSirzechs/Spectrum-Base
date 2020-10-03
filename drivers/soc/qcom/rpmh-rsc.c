@@ -19,6 +19,7 @@
 #include <linux/slab.h>
 #include <linux/module.h>
 #include <linux/spinlock.h>
+#include <linux/module.h>
 
 #include <soc/qcom/cmd-db.h>
 #include <soc/qcom/tcs.h>
