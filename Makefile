@@ -729,6 +729,12 @@ KBUILD_CFLAGS   += -mllvm -polly \
 ifdef CONFIG_LD_DEAD_CODE_DATA_ELIMINATION
    	KBUILD_CFLAGS   += -mllvm -polly-run-dce
 endif
+
+ifdef CONFIG_INLINE_OPTIMIZATION
+ifdef CONFIG_CC_IS_CLANG
+KBUILD_CFLAGS	+= -mllvm -inline-threshold=600
+KBUILD_CFLAGS	+= -mllvm -inlinehint-threshold=750
+endif
 endif
 
 # Tell gcc to never replace conditional load with a non-conditional one
