@@ -1275,6 +1275,9 @@ static void affine_one_perf_thread(struct irqaction *action)
 	} else {
 		mask = cpu_prime_mask;
 		action->thread->pc_flags |= PC_PRIME_AFFINE;
+	} else if (action->flags & IRQF_HP_AFFINE) {
+		mask = cpu_hp_mask;
+		action->thread->pc_flags |= PC_HP_AFFINE;
 	}
 	set_cpus_allowed_ptr(action->thread, mask);
 }
