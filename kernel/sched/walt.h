@@ -20,8 +20,8 @@
  */
 #define DEFAULT_SCHED_RAVG_WINDOW (3333333 * 6)
 #else
-/* Default window size (in ns) = 10ms */
-#define DEFAULT_SCHED_RAVG_WINDOW 10000000
+/* Default window size (in ns) = 6ms */
+#define DEFAULT_SCHED_RAVG_WINDOW 6000000
 #endif
 
 /* Max window size (in ns) = 1s */
