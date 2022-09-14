@@ -507,7 +507,7 @@ static int dsi_panel_reset(struct dsi_panel *panel)
 	struct dsi_panel_reset_config *r_config = &panel->reset_config;
 	int i;
 
-#ifdef OPLUS_BUG_STABILITY
+#if defined OPLUS_BUG_STABILITY && defined CONFIG_DEBUG_KERNEL
 	pr_err("debug for dsi_panel_reset\n");
 #endif
 #if defined(OPLUS_FEATURE_PXLW_IRIS5)
@@ -619,7 +619,7 @@ static int dsi_panel_power_on(struct dsi_panel *panel)
 {
 	int rc = 0;
 
-#ifdef OPLUS_BUG_STABILITY
+#if defined OPLUS_BUG_STABILITY && defined CONFIG_DEBUG_KERNEL
 	pr_err("debug for dsi_panel_power_on\n");
 #endif
 #ifdef OPLUS_BUG_STABILITY
@@ -727,10 +727,9 @@ exit:
 
 static int dsi_panel_power_off(struct dsi_panel *panel)
 {
-	int rc = 0;
+	int rc = 0, esd_check = get_esd_check_happened();
 
-#ifdef OPLUS_BUG_STABILITY
-	int esd_check = get_esd_check_happened();
+#if defined OPLUS_BUG_STABILITY && defined CONFIG_DEBUG_KERNEL
 	pr_err("debug for dsi_panel_power_off\n");
 #endif
 
@@ -5076,7 +5075,7 @@ int dsi_panel_set_lp1(struct dsi_panel *panel)
 		return -EINVAL;
 	}
 
-#ifdef OPLUS_BUG_STABILITY
+#if defined OPLUS_BUG_STABILITY && defined CONFIG_DEBUG_KERNEL
 	pr_err("debug for dsi_panel_set_lp1\n");
 #endif
 
@@ -5123,7 +5122,7 @@ int dsi_panel_set_lp2(struct dsi_panel *panel)
 		return -EINVAL;
 	}
 
-#ifdef OPLUS_BUG_STABILITY
+#if defined OPLUS_BUG_STABILITY && defined CONFIG_DEBUG_KERNEL
 	pr_err("debug for dsi_panel_set_lp2\n");
 #endif
 
@@ -5152,7 +5151,7 @@ int dsi_panel_set_nolp(struct dsi_panel *panel)
 		return -EINVAL;
 	}
 
-#ifdef OPLUS_BUG_STABILITY
+#if defined OPLUS_BUG_STABILITY && defined CONFIG_DEBUG_KERNEL
 	pr_err("debug for dsi_panel_set_nolp\n");
 #endif
 
@@ -5739,7 +5738,7 @@ int dsi_panel_disable(struct dsi_panel *panel)
 		return -EINVAL;
 	}
 
-#ifdef OPLUS_BUG_STABILITY
+#if defined OPLUS_BUG_STABILITY && defined CONFIG_DEBUG_KERNEL
 	pr_err("%s\n", __func__);
 #endif
 
