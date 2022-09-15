@@ -7417,10 +7417,11 @@ static void find_best_target(struct sched_domain *sd, cpumask_t *cpus,
 	 *   a) ACTIVE CPU: target_cpu
 	 *   b) IDLE CPU: best_idle_cpu
 	 */
-
-	if (prefer_idle && (best_idle_cpu != -1)) {
-		target_cpu = best_idle_cpu;
-		goto target;
+	if (target_cpu != -1 && !idle_cpu(target_cpu) &&
+			best_idle_cpu != -1) {
+		curr_tsk = READ_ONCE(cpu_rq(target_cpu)->curr);
+		if (curr_tsk)
+			target_cpu = best_idle_cpu;
 	}
 
 	if (target_cpu == -1)
@@ -7636,6 +7637,17 @@ compute_energy(struct task_struct *p, int dst_cpu, struct perf_domain *pd)
 
 	return energy;
 }
+
+/*
+ * Remove and clamp on negative, from a local variable.
+ *
+ * A variant of sub_positive(), which does not use explicit load-store
+ * and is thus optimized for local variable updates.
+ */
+#define lsub_positive(_ptr, _val) do {				\
+	typeof(_ptr) ptr = (_ptr);				\
+	*ptr -= min_t(typeof(*ptr), *ptr, _val);		\
+} while (0)
 
 static void select_cpu_candidates(struct sched_domain *sd, cpumask_t *cpus,
 		struct perf_domain *pd, struct task_struct *p, int prev_cpu)
