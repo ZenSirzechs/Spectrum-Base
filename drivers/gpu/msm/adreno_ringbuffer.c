@@ -1074,21 +1074,14 @@ int adreno_ringbuffer_submitcmd(struct adreno_device *adreno_dev,
 	if (gpudev->ccu_invalidate)
 		dwords += 4;
 
-<<<<<<< HEAD
-	link = kvcalloc(dwords, sizeof(unsigned int), GFP_KERNEL);
-	if (!link) {
-		ret = -ENOMEM;
-		goto done;
-=======
 	if (dwords <= ARRAY_SIZE(link_onstack)) {
 		link = link_onstack;
 	} else {
-		link = kcalloc(dwords, sizeof(unsigned int), GFP_KERNEL);
+		link = kvcalloc(dwords, sizeof(unsigned int), GFP_KERNEL);
 		if (!link) {
 			ret = -ENOMEM;
 			goto done;
 		}
->>>>>>> e7396da17d3c (msm: kgsl: Avoid dynamically allocating small command buffers)
 	}
 
 	cmds = link;
