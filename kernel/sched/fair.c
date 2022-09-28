@@ -5606,8 +5606,7 @@ enqueue_task_fair(struct rq *rq, struct task_struct *p, int flags)
 		 * overutilized. Hopefully the cpu util will be back to
 		 * normal before next overutilized check.
 		 */
-		if (!task_new &&
-		    !(prefer_idle && rq->nr_running == 1))
+		if (flags & ENQUEUE_WAKEUP)
 			update_overutilized_status(rq);
 	}
 
@@ -8087,12 +8086,14 @@ select_task_rq_fair(struct task_struct *p, int prev_cpu, int sd_flag, int wake_f
 	int cpu = smp_processor_id();
 	int new_cpu = prev_cpu;
 	int want_affine = 0;
+	bool sync_boost;
 	int sync = (wake_flags & WF_SYNC) && !(current->flags & PF_EXITING);
 
 	if (static_branch_unlikely(&sched_energy_present)) {
 		rcu_read_lock();
 		new_cpu = find_energy_efficient_cpu(p, prev_cpu, sync,
-						    sibling_count_hint);
+							sync_boost,
+							sibling_count_hint);
 		if (unlikely(new_cpu < 0))
 			new_cpu = prev_cpu;
 		rcu_read_unlock();
