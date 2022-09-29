@@ -1065,10 +1065,6 @@ EXPORT_SYMBOL(pagevec_lookup_range_nr_tag);
  */
 void __init swap_setup(void)
 {
-#ifdef CONFIG_ANDROID
-	/* Tweak for Android devices using zram */
-	page_cluster = 0;
-#else
 	unsigned long megs = totalram_pages() >> (20 - PAGE_SHIFT);
 
 	/* Use a smaller cluster for small-memory machines */
