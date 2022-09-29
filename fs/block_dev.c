@@ -33,6 +33,7 @@
 #include <linux/badblocks.h>
 #include <linux/task_io_accounting_ops.h>
 #include <linux/falloc.h>
+#include <linux/suspend.h>
 #include <linux/uaccess.h>
 #include "internal.h"
 
