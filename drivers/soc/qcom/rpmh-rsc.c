@@ -471,7 +471,6 @@ done_write:
  * Return: 0 on success, -EINVAL on error.
  * Note: This call blocks until a valid data is written to the TCS.
  */
- extern int in_long_press;
 int rpmh_rsc_send_data(struct rsc_drv *drv, const struct tcs_request *msg)
 {
 	int ret;
@@ -490,10 +489,6 @@ int rpmh_rsc_send_data(struct rsc_drv *drv, const struct tcs_request *msg)
 					    drv->name, msg->cmds[0].addr);
 			udelay(10);
 			count++;
-		}
-		if ((count == 50000) && (in_long_press)) {
-			printk(KERN_ERR "Long Press :TCS Busy but log saved!");
-			break;
 		}
 
 	} while (ret == -EBUSY);
