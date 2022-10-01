@@ -1,0 +1,11 @@
+Spectrum First Test :
+Merge Latest CAF Source (LA.UM.9.12.r1-14700-SMxx50.0)
+Import Techpack | Drivers/staging from CAF with same Tag 
+Import Latest EROFS Backport for 4.19
+Import Techpack/camera From Latest OOS12.1 Source for Oneplus KONA 
+Import Changes from Latest OOS12.1 Source for Oneplus KONA
+Fixup qcacld-3.0 / fw-api / qca-wifi-host-cmn for be buildable and usable 
+Fixup techpack/data for be buildable 
+Import changes from Lineage-19.1 kernel
+Reduce Spam while building the kernel 
+Import Spectrum defconfig
