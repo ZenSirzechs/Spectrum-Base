@@ -9,3 +9,18 @@ Fixup techpack/data for be buildable
 Import changes from Lineage-19.1 kernel
 Reduce Spam while building the kernel 
 Import Spectrum defconfig
+
+Spectrum 2nd Test :
+Make available ZEN I/O Scheduler
+Enable Advanced TCP Congestion Control
+Upstream (Update) Wireguard and Enable It 
+Improve cpu boost (cpu boost will be cleaned its pretty useless)
+Add Fast Charge Option and Vibration control 
+Add Backlight scale Option 
+Enable USB UAS 
+Import Latest Backport for exfat 4.19 and Enable it 
+Upstream lib : LZO/LZ4
+Little ZRAM changes
+Enable QCA6390 Wifi Extension
+Shut up Makefile.build objdump error msg
+Fix qcacld-3.0
