@@ -17,6 +17,7 @@
 #include <linux/of_platform.h>
 #include <linux/platform_device.h>
 #include <linux/slab.h>
+#include <linux/module.h>
 #include <linux/spinlock.h>
 
 #include <soc/qcom/cmd-db.h>
