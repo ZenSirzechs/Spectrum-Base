@@ -318,9 +318,6 @@ static void tp_touch_down(struct touchpanel_data *ts, struct point_info points, 
 		tp_rate_calc(ts, TP_RATE_CALC);
 	}
 
-    TPD_SPECIFIC_PRINT(point_num, "Touchpanel id %d :Down[%4d %4d %4d %4d %4d %4d %4d]\n", id, points.x, points.y, points.z,
-		points.rx_press, points.tx_press, points.rx_er ,points.tx_er);
-
 #ifndef TYPE_B_PROTOCOL
     input_mt_sync(ts->input_dev);
 #endif
