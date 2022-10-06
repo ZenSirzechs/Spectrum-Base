@@ -1928,7 +1928,9 @@ static int dsi_panel_parse_qsync_caps(struct dsi_panel *panel,
 	u32 val = 0, i;
 	struct dsi_qsync_capabilities *qsync_caps = &panel->qsync_caps;
 	struct dsi_parser_utils *utils = &panel->utils;
+#ifdef CONFIG_DEBUG_KERNEL
 	const char *name = panel->name;
+#endif
 
 	/**
 	 * "mdss-dsi-qsync-min-refresh-rate" is defined in cmd mode and
@@ -2019,7 +2021,9 @@ static int dsi_panel_parse_dyn_clk_caps(struct dsi_panel *panel)
 	bool supported = false;
 	struct dsi_dyn_clk_caps *dyn_clk_caps = &panel->dyn_clk_caps;
 	struct dsi_parser_utils *utils = &panel->utils;
+#ifdef CONFIG_DEBUG_KERNEL
 	const char *name = panel->name;
+#endif
 	const char *type;
 
 	supported = utils->read_bool(utils->data, "qcom,dsi-dyn-clk-enable");
@@ -2080,7 +2084,9 @@ static int dsi_panel_parse_dfps_caps(struct dsi_panel *panel)
 	bool supported = false;
 	struct dsi_dfps_capabilities *dfps_caps = &panel->dfps_caps;
 	struct dsi_parser_utils *utils = &panel->utils;
+#ifdef CONFIG_DEBUG_KERNEL
 	const char *name = panel->name;
+#endif
 	const char *type;
 	u32 i;
 
@@ -2353,7 +2359,9 @@ static int dsi_panel_parse_phy_props(struct dsi_panel *panel)
 	const char *str;
 	struct dsi_panel_phy_props *props = &panel->phy_props;
 	struct dsi_parser_utils *utils = &panel->utils;
+#ifdef CONFIG_DEBUG_KERNEL
 	const char *name = panel->name;
+#endif
 
 	rc = utils->read_u32(utils->data,
 		  "qcom,mdss-pan-physical-width-dimension", &val);
