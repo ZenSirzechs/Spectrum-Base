@@ -24,3 +24,6 @@ Little ZRAM changes
 Enable QCA6390 Wifi Extension
 Shut up Makefile.build objdump error msg
 Fix qcacld-3.0
+
+Spectrum Stable V1.0.0 :
+ULTRA CLEANUP OF DEFCONFIG [NOT FINISHED BUT ITS ALREADY GOOD]
