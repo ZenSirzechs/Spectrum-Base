@@ -338,6 +338,8 @@ static int __init devfreq_boost_init(void)
 
 	return 0;
 
+unregister_handler:
+	input_unregister_handler(&devfreq_boost_input_handler);
 stop_kthreads:
 	while (i--)
 		kthread_stop(thread[i]);
