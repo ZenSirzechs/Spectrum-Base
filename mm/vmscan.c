@@ -1836,6 +1836,7 @@ static unsigned long isolate_lru_pages(unsigned long nr_to_scan,
 int isolate_lru_page(struct page *page)
 {
 	int ret = -EBUSY;
+	int lru = page_lru(page);
 
 	VM_BUG_ON_PAGE(!page_count(page), page);
 	WARN_RATELIMIT(PageTail(page), "trying to isolate tail page");
@@ -4504,19 +4505,10 @@ void check_move_unevictable_pages(struct page **pages, int nr_pages)
 			spin_lock_irq(&pgdat->lru_lock);
 		}
 		lruvec = mem_cgroup_page_lruvec(page, pgdat);
+		int lru = page_lru(page);
 
-<<<<<<< HEAD
-		if (!PageLRU(page) || !PageUnevictable(page))
-			continue;
-
-		if (page_evictable(page)) {
-			enum lru_list lru = page_lru_base_type(page);
-
-			VM_BUG_ON_PAGE(PageActive(page), page);
-=======
 		if (page_evictable(page) && PageUnevictable(page)) {
-			del_page_from_lru_list(page, lruvec);
->>>>>>> 5dc986c5225b ([BACKPORT] mm/lru: introduce TestClearPageLRU())
+			del_page_from_lru_list(page, lruvec, lru);
 			ClearPageUnevictable(page);
 			del_page_from_lru_list(page, lruvec, LRU_UNEVICTABLE);
 			add_page_to_lru_list(page, lruvec, lru);
