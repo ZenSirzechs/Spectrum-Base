@@ -27,3 +27,24 @@ Fix qcacld-3.0
 
 Spectrum Stable V1.0.0 :
 ULTRA CLEANUP OF DEFCONFIG [NOT FINISHED BUT ITS ALREADY GOOD]
+
+Spectrum Stable v1.0.1 :
+F2FS IMPROVEMENT
+LRNG
+DEVFREQ BOOST
+CGROUP ASSIST
+DTBO BUILD
+DEBLOAT
+THERMAL CLEANUP
+DEEP SLEEP IMPROVEMENT
+SCHEDUTILS NEW OPTIONS
+KCAL
+CLEANUP (FUCK DEBUG)
+ADRENO BOOST
+CUSTOM VIBRATION LVL 
+SIMPLE LMK
+RCU BACKPORT (THX TO FRASHARP : https://github.com/FraSharp/kernel_oneplus_kebab)
+Revert WALT (fake) Improvement 
+and more...
+
+Result to better performance with a active drain reduced
