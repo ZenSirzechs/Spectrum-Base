@@ -334,11 +334,7 @@ CONFIG_DUMMY=y
 CONFIG_IFB=y
 CONFIG_TUN=y
 CONFIG_VETH=y
-<<<<<<< HEAD
-CONFIG_AQFWD=y
 CONFIG_IGB=y
-=======
->>>>>>> d4f3d3cfae68c (treewide: Import minimal changes from oneplus/sm8250_s_12.1)
 CONFIG_SKY2=y
 CONFIG_RMNET=y
 CONFIG_SMSC911X=y
